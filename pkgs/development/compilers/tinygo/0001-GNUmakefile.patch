@@ -24,14 +24,7 @@ diff --git a/GNUmakefile b/GNUmakefile
  	@mkdir -p build/release/tinygo/lib/CMSIS/CMSIS
  	@mkdir -p build/release/tinygo/lib/macos-minimal-sdk
  	@mkdir -p build/release/tinygo/lib/mingw-w64/mingw-w64-crt/lib-common
-@@ -871,7 +865,6 @@ build/release: tinygo gen-device wasi-libc $(if $(filter 1,$(USE_SYSTEM_BINARYEN
- ifneq ($(USE_SYSTEM_BINARYEN),1)
- 	@cp -p  build/wasm-opt$(EXE)         build/release/tinygo/bin
- endif
--	@cp -p $(abspath $(CLANG_SRC))/lib/Headers/*.h build/release/tinygo/lib/clang/include
- 	@cp -rp lib/CMSIS/CMSIS/Include      build/release/tinygo/lib/CMSIS/CMSIS
- 	@cp -rp lib/CMSIS/README.md          build/release/tinygo/lib/CMSIS
- 	@cp -rp lib/macos-minimal-sdk/*      build/release/tinygo/lib/macos-minimal-sdk
+
 @@ -927,8 +920,7 @@ endif
  	@cp -rp lib/wasi-libc/libc-top-half/musl/include                build/release/tinygo/lib/wasi-libc/libc-top-half/musl
  	@cp -rp lib/wasi-libc/sysroot                                   build/release/tinygo/lib/wasi-libc/sysroot
