@@ -13,17 +13,6 @@ diff --git a/GNUmakefile b/GNUmakefile
  # First search for a custom built copy, then move on to explicitly version-tagged binaries, then just see if the tool is in path with its normal name.
  findLLVMTool = $(call detect,$(1),$(abspath llvm-build/bin/$(1)) $(foreach ver,$(LLVM_VERSIONS),$(call toolSearchPathsVersion,$(1),$(ver))) $(1))
  CLANG ?= $(call findLLVMTool,clang)
-@@ -848,9 +843,8 @@ endif
- wasmtest:
- 	$(GO) test ./tests/wasm
- 
--build/release: tinygo gen-device wasi-libc $(if $(filter 1,$(USE_SYSTEM_BINARYEN)),,binaryen)
-+build/release:
- 	@mkdir -p build/release/tinygo/bin
--	@mkdir -p build/release/tinygo/lib/clang/include
- 	@mkdir -p build/release/tinygo/lib/CMSIS/CMSIS
- 	@mkdir -p build/release/tinygo/lib/macos-minimal-sdk
- 	@mkdir -p build/release/tinygo/lib/mingw-w64/mingw-w64-crt/lib-common
 
 @@ -927,8 +920,7 @@ endif
  	@cp -rp lib/wasi-libc/libc-top-half/musl/include                build/release/tinygo/lib/wasi-libc/libc-top-half/musl
